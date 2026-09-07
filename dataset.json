@@ -1,0 +1,17 @@
+[
+  {
+    "task": "Extract all AWS S3 bucket names from a CloudFormation template string",
+    "format": "regex",
+    "solution_criteria": "The regex should accurately match S3 bucket logical IDs or references in CloudFormation syntax (e.g., 'AWS::S3::Bucket' resources and their names). Should handle variations in whitespace and quotes."
+  },
+  {
+    "task": "Parse an AWS IAM policy JSON document and extract all allowed actions for a specific resource",
+    "format": "python",
+    "solution_criteria": "Function should accept an IAM policy JSON string and return a list of all Action values where Effect is 'Allow'. Should handle both single actions and wildcard patterns."
+  },
+  {
+    "task": "Create a JSON configuration object for an AWS Lambda function environment with standard logging and monitoring settings",
+    "format": "json",
+    "solution_criteria": "The JSON should include Environment variables for CloudWatch logging, X-Ray tracing, and Lambda insights. Should follow AWS Lambda configuration schema with proper key-value pairs."
+  }
+]
