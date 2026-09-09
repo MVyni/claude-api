@@ -1,0 +1,251 @@
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Prompt Evaluation Report</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                line-height: 1.6;
+                margin: 0;
+                padding: 20px;
+                color: #333;
+            }
+            .header {
+                background-color: #f0f0f0;
+                padding: 20px;
+                border-radius: 5px;
+                margin-bottom: 20px;
+            }
+            .summary-stats {
+                display: flex;
+                justify-content: space-between;
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+            .stat-box {
+                background-color: #fff;
+                border-radius: 5px;
+                padding: 15px;
+                box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+                flex-basis: 30%;
+                min-width: 200px;
+            }
+            .stat-value {
+                font-size: 24px;
+                font-weight: bold;
+                margin-top: 5px;
+            }
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                margin-top: 20px;
+            }
+            th {
+                background-color: #4a4a4a;
+                color: white;
+                text-align: left;
+                padding: 12px;
+            }
+            td {
+                padding: 10px;
+                border-bottom: 1px solid #ddd;
+                vertical-align: top;
+            }
+            tr:nth-child(even) {
+                background-color: #f9f9f9;
+            }
+            .output-cell {
+                white-space: pre-wrap;
+            }
+            .score {
+                font-weight: bold;
+                padding: 5px 10px;
+                border-radius: 3px;
+                display: inline-block;
+            }
+            .score-high {
+                background-color: #c8e6c9;
+                color: #2e7d32;
+            }
+            .score-medium {
+                background-color: #fff9c4;
+                color: #f57f17;
+            }
+            .score-low {
+                background-color: #ffcdd2;
+                color: #c62828;
+            }
+            .output {
+                overflow: auto;
+                white-space: pre-wrap;
+            }
+
+            .output pre {
+                background-color: #f5f5f5;
+                border: 1px solid #ddd;
+                border-radius: 4px;
+                padding: 10px;
+                margin: 0;
+                font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+                font-size: 14px;
+                line-height: 1.4;
+                color: #333;
+                box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+                overflow-x: auto;
+                white-space: pre-wrap; 
+                word-wrap: break-word; 
+            }
+
+            td {
+                width: 20%;
+            }
+            .score-col {
+                width: 80px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="header">
+            <h1>Prompt Evaluation Report</h1>
+            <div class="summary-stats">
+                <div class="stat-box">
+                    <div>Total Test Cases</div>
+                    <div class="stat-value">3</div>
+                </div>
+                <div class="stat-box">
+                    <div>Average Score</div>
+                    <div class="stat-value">8.0 / 10</div>
+                </div>
+                <div class="stat-box">
+                    <div>Pass Rate (≥7)</div>
+                    <div class="stat-value">66.7%</div>
+                </div>
+            </div>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Scenario</th>
+                    <th>Prompt Inputs</th>
+                    <th>Solution Criteria</th>
+                    <th>Output</th>
+                    <th>Score</th>
+                    <th>Reasoning</th>
+                </tr>
+            </thead>
+            <tbody>
+    
+            <tr>
+                <td>Testing with an interdisciplinary passage containing overlapping topics (e.g., a climate science article discussing economics, policy, and environmental biology) to verify the prompt correctly identifies and separates distinct topic areas without redundancy</td>
+                <td class="prompt-inputs"><strong>content:</strong> Rising atmospheric CO2 concentrations are driving unprecedented changes in marine ecosystems, with significant economic implications for coastal communities. Coral bleaching events, triggered by ocean warming and acidification, threaten biodiversity hotspots while simultaneously undermining fisheries that support millions of people in developing nations. Policy interventions, including carbon pricing mechanisms and marine protected areas, attempt to balance conservation goals with economic development. Research demonstrates that kelp forest ecosystems respond differently to thermal stress than coral reefs, suggesting region-specific adaptation strategies are necessary. The economic valuation of ecosystem services—including carbon sequestration, nutrient cycling, and food provision—remains contested among environmental economists, yet increasingly informs international climate negotiations and trade agreements.</td>
+                <td class="criteria">• Identifies all major topic areas without redundancy (e.g., climate science, marine biology, economics, policy)<br>• Separates overlapping concepts into distinct topics rather than merging them<br>• Returns results as a JSON array of strings with no additional formatting or explanations</td>
+                <td class="output"><pre>```json
+[
+  "atmospheric CO2 concentrations",
+  "marine ecosystems",
+  "coral bleaching",
+  "ocean warming",
+  "ocean acidification",
+  "biodiversity",
+  "fisheries",
+  "developing nations",
+  "carbon pricing",
+  "marine protected areas",
+  "conservation",
+  "economic development",
+  "kelp forest ecosystems",
+  "thermal stress",
+  "coral reefs",
+  "adaptation strategies",
+  "ecosystem services",
+  "carbon sequestration",
+  "nutrient cycling",
+  "environmental economics",
+  "climate negotiations",
+  "trade agreements"
+]
+```</pre></td>
+                <td class="score-col"><span class="score score-high">9</span></td>
+                <td class="reasoning">The solution fully satisfies all mandatory requirements: it is a valid JSON array of strings containing topics from the article with no extra commentary. It meets the secondary criteria by identifying major topic areas across climate science, marine biology, economics, and policy without significant redundancy. The topics are appropriately separated rather than merged (e.g., distinct treatment of coral bleaching, ocean warming, and acidification). While there are minor inconsistencies in granularity level, these do not constitute significant deficiencies against the stated criteria. The extraction is thorough and well-organized.</td>
+            </tr>
+        
+            <tr>
+                <td>Testing with a dense theoretical passage featuring domain-specific jargon and abstract concepts (e.g., a philosophy or theoretical physics article) to ensure the prompt can extract high-level conceptual topics rather than getting stuck on technical terminology</td>
+                <td class="prompt-inputs"><strong>content:</strong> The phenomenological reduction, or epoché, constitutes a methodological bracketing of ontological presuppositions to access the transcendental ego's intentional structures. Husserl's transcendental idealism posits that consciousness is fundamentally noetic—characterized by acts of meaning-constitution rather than passive reception of sense data. This framework diverges sharply from empiricist epistemologies by privileging the eidetic dimension of experience, wherein essences are grasped through imaginative variation rather than inductive generalization. Simultaneously, the intersubjective constitution of the lifeworld (Lebenswelt) emerges as a corrective to Cartesian solipsism, demonstrating how shared horizons of meaning enable mutual intelligibility and social normativity. The tension between transcendental subjectivity and intersubjective objectivity remains central to post-Husserlian phenomenology, particularly in Heidegger's reformulation of the ontological question and Merleau-Ponty's embodied critique of pure consciousness.</td>
+                <td class="criteria">• Extracts high-level conceptual topics (e.g., phenomenological reduction, transcendental idealism, intersubjectivity) rather than isolated technical terms<br>• Identifies major philosophical frameworks and their relationships discussed in the passage<br>• Returns results as a JSON array of strings with meaningful topic labels</td>
+                <td class="output"><pre>```json
+[
+  "phenomenological reduction",
+  "epoché",
+  "ontological presuppositions",
+  "transcendental ego",
+  "intentional structures",
+  "Husserl's transcendental idealism",
+  "consciousness",
+  "noetic acts",
+  "meaning-constitution",
+  "empiricist epistemologies",
+  "eidetic dimension",
+  "essences",
+  "imaginative variation",
+  "inductive generalization",
+  "intersubjective constitution",
+  "lifeworld (Lebenswelt)",
+  "Cartesian solipsism",
+  "shared horizons of meaning",
+  "mutual intelligibility",
+  "social normativity",
+  "transcendental subjectivity",
+  "intersubjective objectivity",
+  "post-Husserlian phenomenology",
+  "Heidegger",
+  "ontological question",
+  "Merleau-Ponty",
+  "embodied critique",
+  "pure consciousness"
+]
+```</pre></td>
+                <td class="score-col"><span class="score score-medium">6</span></td>
+                <td class="reasoning">The solution meets all mandatory requirements: it is a valid JSON array of strings containing topics from the passage with no extra commentary. However, it has notable deficiencies against the secondary criteria. The task explicitly asks for 'high-level conceptual topics' and 'major philosophical frameworks,' yet the solution includes many isolated technical terms ('noetic acts', 'eidetic dimension', 'imaginative variation', 'inductive generalization') that are more granular than conceptual. A stronger solution would consolidate related ideas into higher-level topics (e.g., grouping 'noetic acts' and 'meaning-constitution' under a single topic about consciousness and intentionality). The inclusion of both 'Husserl's transcendental idealism' and 'transcendental subjectivity' as separate topics also suggests insufficient abstraction. While the solution demonstrates good comprehension of the passage, it prioritizes completeness over the requested conceptual hierarchy.</td>
+            </tr>
+        
+            <tr>
+                <td>Testing with a passage containing implicit and explicit topics, where some key themes are stated directly while others must be inferred from context, to evaluate whether the prompt extracts both obvious and subtle subject matter accurately</td>
+                <td class="prompt-inputs"><strong>content:</strong> The proliferation of machine learning algorithms in clinical diagnostics has transformed medical practice, particularly in radiology and pathology. While deep neural networks explicitly demonstrate superior accuracy in detecting malignant tumors compared to traditional statistical methods, their implementation raises broader concerns about algorithmic bias, data privacy, and the erosion of physician autonomy. Furthermore, the economic implications of automation in healthcare—including workforce displacement and shifts in hospital resource allocation—remain underexplored in the literature, despite their significance for healthcare policy and professional practice. These interconnected challenges underscore the necessity of interdisciplinary approaches that integrate technical innovation with ethical frameworks and socioeconomic analysis.</td>
+                <td class="criteria">• Extracts explicit topics directly stated in the passage (e.g., machine learning, clinical diagnostics, deep neural networks, radiology, pathology)<br>• Identifies implicit themes requiring inference from context (e.g., healthcare ethics, algorithmic bias, workforce economics, physician role changes)<br>• Returns results as a JSON array of strings with no duplicates<br>• Avoids extracting overly broad terms that lack specificity to the passage content</td>
+                <td class="output"><pre>```json
+[
+  "machine learning algorithms",
+  "clinical diagnostics",
+  "medical practice",
+  "radiology",
+  "pathology",
+  "deep neural networks",
+  "tumor detection",
+  "statistical methods",
+  "algorithmic bias",
+  "data privacy",
+  "physician autonomy",
+  "healthcare automation",
+  "workforce displacement",
+  "hospital resource allocation",
+  "healthcare policy",
+  "professional practice",
+  "interdisciplinary approaches",
+  "ethical frameworks",
+  "socioeconomic analysis"
+]
+```</pre></td>
+                <td class="score-col"><span class="score score-high">9</span></td>
+                <td class="reasoning">The solution fully satisfies all mandatory requirements: it is a valid JSON array of strings containing topics from the article, with no extra commentary, and nothing but the JSON array in the response. It successfully identifies both explicit topics (machine learning algorithms, clinical diagnostics, radiology, pathology, deep neural networks, data privacy) and implicit themes requiring inference (algorithmic bias, physician autonomy, workforce displacement, healthcare economics). The 19 topics are well-selected, specific to the passage content, and avoid overly broad generalizations. The only minor issue is that 'tumor detection' is a slight paraphrase rather than a direct extraction, and 'malignant tumors' could have been included as an explicit topic. These are negligible deficiencies that do not impact the overall quality or usability of the output.</td>
+            </tr>
+        
+            </tbody>
+        </table>
+    </body>
+    </html>
+    

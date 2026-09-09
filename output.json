@@ -1,0 +1,54 @@
+[
+  {
+    "output": "```json\n[\n  \"atmospheric CO2 concentrations\",\n  \"marine ecosystems\",\n  \"coral bleaching\",\n  \"ocean warming\",\n  \"ocean acidification\",\n  \"biodiversity\",\n  \"fisheries\",\n  \"developing nations\",\n  \"carbon pricing\",\n  \"marine protected areas\",\n  \"conservation\",\n  \"economic development\",\n  \"kelp forest ecosystems\",\n  \"thermal stress\",\n  \"coral reefs\",\n  \"adaptation strategies\",\n  \"ecosystem services\",\n  \"carbon sequestration\",\n  \"nutrient cycling\",\n  \"environmental economics\",\n  \"climate negotiations\",\n  \"trade agreements\"\n]\n```",
+    "test_case": {
+      "prompt_inputs": {
+        "content": "Rising atmospheric CO2 concentrations are driving unprecedented changes in marine ecosystems, with significant economic implications for coastal communities. Coral bleaching events, triggered by ocean warming and acidification, threaten biodiversity hotspots while simultaneously undermining fisheries that support millions of people in developing nations. Policy interventions, including carbon pricing mechanisms and marine protected areas, attempt to balance conservation goals with economic development. Research demonstrates that kelp forest ecosystems respond differently to thermal stress than coral reefs, suggesting region-specific adaptation strategies are necessary. The economic valuation of ecosystem services\u2014including carbon sequestration, nutrient cycling, and food provision\u2014remains contested among environmental economists, yet increasingly informs international climate negotiations and trade agreements."
+      },
+      "solution_criteria": [
+        "Identifies all major topic areas without redundancy (e.g., climate science, marine biology, economics, policy)",
+        "Separates overlapping concepts into distinct topics rather than merging them",
+        "Returns results as a JSON array of strings with no additional formatting or explanations"
+      ],
+      "task_description": "\nExtract topics out of a passage of text from a scholarly article into a JSON array of strings.\n",
+      "scenario": "Testing with an interdisciplinary passage containing overlapping topics (e.g., a climate science article discussing economics, policy, and environmental biology) to verify the prompt correctly identifies and separates distinct topic areas without redundancy"
+    },
+    "score": 9,
+    "reasoning": "The solution fully satisfies all mandatory requirements: it is a valid JSON array of strings containing topics from the article with no extra commentary. It meets the secondary criteria by identifying major topic areas across climate science, marine biology, economics, and policy without significant redundancy. The topics are appropriately separated rather than merged (e.g., distinct treatment of coral bleaching, ocean warming, and acidification). While there are minor inconsistencies in granularity level, these do not constitute significant deficiencies against the stated criteria. The extraction is thorough and well-organized."
+  },
+  {
+    "output": "```json\n[\n  \"phenomenological reduction\",\n  \"epoch\u00e9\",\n  \"ontological presuppositions\",\n  \"transcendental ego\",\n  \"intentional structures\",\n  \"Husserl's transcendental idealism\",\n  \"consciousness\",\n  \"noetic acts\",\n  \"meaning-constitution\",\n  \"empiricist epistemologies\",\n  \"eidetic dimension\",\n  \"essences\",\n  \"imaginative variation\",\n  \"inductive generalization\",\n  \"intersubjective constitution\",\n  \"lifeworld (Lebenswelt)\",\n  \"Cartesian solipsism\",\n  \"shared horizons of meaning\",\n  \"mutual intelligibility\",\n  \"social normativity\",\n  \"transcendental subjectivity\",\n  \"intersubjective objectivity\",\n  \"post-Husserlian phenomenology\",\n  \"Heidegger\",\n  \"ontological question\",\n  \"Merleau-Ponty\",\n  \"embodied critique\",\n  \"pure consciousness\"\n]\n```",
+    "test_case": {
+      "prompt_inputs": {
+        "content": "The phenomenological reduction, or epoch\u00e9, constitutes a methodological bracketing of ontological presuppositions to access the transcendental ego's intentional structures. Husserl's transcendental idealism posits that consciousness is fundamentally noetic\u2014characterized by acts of meaning-constitution rather than passive reception of sense data. This framework diverges sharply from empiricist epistemologies by privileging the eidetic dimension of experience, wherein essences are grasped through imaginative variation rather than inductive generalization. Simultaneously, the intersubjective constitution of the lifeworld (Lebenswelt) emerges as a corrective to Cartesian solipsism, demonstrating how shared horizons of meaning enable mutual intelligibility and social normativity. The tension between transcendental subjectivity and intersubjective objectivity remains central to post-Husserlian phenomenology, particularly in Heidegger's reformulation of the ontological question and Merleau-Ponty's embodied critique of pure consciousness."
+      },
+      "solution_criteria": [
+        "Extracts high-level conceptual topics (e.g., phenomenological reduction, transcendental idealism, intersubjectivity) rather than isolated technical terms",
+        "Identifies major philosophical frameworks and their relationships discussed in the passage",
+        "Returns results as a JSON array of strings with meaningful topic labels"
+      ],
+      "task_description": "\nExtract topics out of a passage of text from a scholarly article into a JSON array of strings.\n",
+      "scenario": "Testing with a dense theoretical passage featuring domain-specific jargon and abstract concepts (e.g., a philosophy or theoretical physics article) to ensure the prompt can extract high-level conceptual topics rather than getting stuck on technical terminology"
+    },
+    "score": 6,
+    "reasoning": "The solution meets all mandatory requirements: it is a valid JSON array of strings containing topics from the passage with no extra commentary. However, it has notable deficiencies against the secondary criteria. The task explicitly asks for 'high-level conceptual topics' and 'major philosophical frameworks,' yet the solution includes many isolated technical terms ('noetic acts', 'eidetic dimension', 'imaginative variation', 'inductive generalization') that are more granular than conceptual. A stronger solution would consolidate related ideas into higher-level topics (e.g., grouping 'noetic acts' and 'meaning-constitution' under a single topic about consciousness and intentionality). The inclusion of both 'Husserl's transcendental idealism' and 'transcendental subjectivity' as separate topics also suggests insufficient abstraction. While the solution demonstrates good comprehension of the passage, it prioritizes completeness over the requested conceptual hierarchy."
+  },
+  {
+    "output": "```json\n[\n  \"machine learning algorithms\",\n  \"clinical diagnostics\",\n  \"medical practice\",\n  \"radiology\",\n  \"pathology\",\n  \"deep neural networks\",\n  \"tumor detection\",\n  \"statistical methods\",\n  \"algorithmic bias\",\n  \"data privacy\",\n  \"physician autonomy\",\n  \"healthcare automation\",\n  \"workforce displacement\",\n  \"hospital resource allocation\",\n  \"healthcare policy\",\n  \"professional practice\",\n  \"interdisciplinary approaches\",\n  \"ethical frameworks\",\n  \"socioeconomic analysis\"\n]\n```",
+    "test_case": {
+      "prompt_inputs": {
+        "content": "The proliferation of machine learning algorithms in clinical diagnostics has transformed medical practice, particularly in radiology and pathology. While deep neural networks explicitly demonstrate superior accuracy in detecting malignant tumors compared to traditional statistical methods, their implementation raises broader concerns about algorithmic bias, data privacy, and the erosion of physician autonomy. Furthermore, the economic implications of automation in healthcare\u2014including workforce displacement and shifts in hospital resource allocation\u2014remain underexplored in the literature, despite their significance for healthcare policy and professional practice. These interconnected challenges underscore the necessity of interdisciplinary approaches that integrate technical innovation with ethical frameworks and socioeconomic analysis."
+      },
+      "solution_criteria": [
+        "Extracts explicit topics directly stated in the passage (e.g., machine learning, clinical diagnostics, deep neural networks, radiology, pathology)",
+        "Identifies implicit themes requiring inference from context (e.g., healthcare ethics, algorithmic bias, workforce economics, physician role changes)",
+        "Returns results as a JSON array of strings with no duplicates",
+        "Avoids extracting overly broad terms that lack specificity to the passage content"
+      ],
+      "task_description": "\nExtract topics out of a passage of text from a scholarly article into a JSON array of strings.\n",
+      "scenario": "Testing with a passage containing implicit and explicit topics, where some key themes are stated directly while others must be inferred from context, to evaluate whether the prompt extracts both obvious and subtle subject matter accurately"
+    },
+    "score": 9,
+    "reasoning": "The solution fully satisfies all mandatory requirements: it is a valid JSON array of strings containing topics from the article, with no extra commentary, and nothing but the JSON array in the response. It successfully identifies both explicit topics (machine learning algorithms, clinical diagnostics, radiology, pathology, deep neural networks, data privacy) and implicit themes requiring inference (algorithmic bias, physician autonomy, workforce displacement, healthcare economics). The 19 topics are well-selected, specific to the passage content, and avoid overly broad generalizations. The only minor issue is that 'tumor detection' is a slight paraphrase rather than a direct extraction, and 'malignant tumors' could have been included as an explicit topic. These are negligible deficiencies that do not impact the overall quality or usability of the output."
+  }
+]

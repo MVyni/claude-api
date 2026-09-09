@@ -1,17 +1,39 @@
 [
   {
-    "task": "Extract all AWS S3 bucket names from a CloudFormation template string",
-    "format": "regex",
-    "solution_criteria": "The regex should accurately match S3 bucket logical IDs or references in CloudFormation syntax (e.g., 'AWS::S3::Bucket' resources and their names). Should handle variations in whitespace and quotes."
+    "prompt_inputs": {
+      "content": "Rising atmospheric CO2 concentrations are driving unprecedented changes in marine ecosystems, with significant economic implications for coastal communities. Coral bleaching events, triggered by ocean warming and acidification, threaten biodiversity hotspots while simultaneously undermining fisheries that support millions of people in developing nations. Policy interventions, including carbon pricing mechanisms and marine protected areas, attempt to balance conservation goals with economic development. Research demonstrates that kelp forest ecosystems respond differently to thermal stress than coral reefs, suggesting region-specific adaptation strategies are necessary. The economic valuation of ecosystem services\u2014including carbon sequestration, nutrient cycling, and food provision\u2014remains contested among environmental economists, yet increasingly informs international climate negotiations and trade agreements."
+    },
+    "solution_criteria": [
+      "Identifies all major topic areas without redundancy (e.g., climate science, marine biology, economics, policy)",
+      "Separates overlapping concepts into distinct topics rather than merging them",
+      "Returns results as a JSON array of strings with no additional formatting or explanations"
+    ],
+    "task_description": "\nExtract topics out of a passage of text from a scholarly article into a JSON array of strings.\n",
+    "scenario": "Testing with an interdisciplinary passage containing overlapping topics (e.g., a climate science article discussing economics, policy, and environmental biology) to verify the prompt correctly identifies and separates distinct topic areas without redundancy"
   },
   {
-    "task": "Parse an AWS IAM policy JSON document and extract all allowed actions for a specific resource",
-    "format": "python",
-    "solution_criteria": "Function should accept an IAM policy JSON string and return a list of all Action values where Effect is 'Allow'. Should handle both single actions and wildcard patterns."
+    "prompt_inputs": {
+      "content": "The phenomenological reduction, or epoch\u00e9, constitutes a methodological bracketing of ontological presuppositions to access the transcendental ego's intentional structures. Husserl's transcendental idealism posits that consciousness is fundamentally noetic\u2014characterized by acts of meaning-constitution rather than passive reception of sense data. This framework diverges sharply from empiricist epistemologies by privileging the eidetic dimension of experience, wherein essences are grasped through imaginative variation rather than inductive generalization. Simultaneously, the intersubjective constitution of the lifeworld (Lebenswelt) emerges as a corrective to Cartesian solipsism, demonstrating how shared horizons of meaning enable mutual intelligibility and social normativity. The tension between transcendental subjectivity and intersubjective objectivity remains central to post-Husserlian phenomenology, particularly in Heidegger's reformulation of the ontological question and Merleau-Ponty's embodied critique of pure consciousness."
+    },
+    "solution_criteria": [
+      "Extracts high-level conceptual topics (e.g., phenomenological reduction, transcendental idealism, intersubjectivity) rather than isolated technical terms",
+      "Identifies major philosophical frameworks and their relationships discussed in the passage",
+      "Returns results as a JSON array of strings with meaningful topic labels"
+    ],
+    "task_description": "\nExtract topics out of a passage of text from a scholarly article into a JSON array of strings.\n",
+    "scenario": "Testing with a dense theoretical passage featuring domain-specific jargon and abstract concepts (e.g., a philosophy or theoretical physics article) to ensure the prompt can extract high-level conceptual topics rather than getting stuck on technical terminology"
   },
   {
-    "task": "Create a JSON configuration object for an AWS Lambda function environment with standard logging and monitoring settings",
-    "format": "json",
-    "solution_criteria": "The JSON should include Environment variables for CloudWatch logging, X-Ray tracing, and Lambda insights. Should follow AWS Lambda configuration schema with proper key-value pairs."
+    "prompt_inputs": {
+      "content": "The proliferation of machine learning algorithms in clinical diagnostics has transformed medical practice, particularly in radiology and pathology. While deep neural networks explicitly demonstrate superior accuracy in detecting malignant tumors compared to traditional statistical methods, their implementation raises broader concerns about algorithmic bias, data privacy, and the erosion of physician autonomy. Furthermore, the economic implications of automation in healthcare\u2014including workforce displacement and shifts in hospital resource allocation\u2014remain underexplored in the literature, despite their significance for healthcare policy and professional practice. These interconnected challenges underscore the necessity of interdisciplinary approaches that integrate technical innovation with ethical frameworks and socioeconomic analysis."
+    },
+    "solution_criteria": [
+      "Extracts explicit topics directly stated in the passage (e.g., machine learning, clinical diagnostics, deep neural networks, radiology, pathology)",
+      "Identifies implicit themes requiring inference from context (e.g., healthcare ethics, algorithmic bias, workforce economics, physician role changes)",
+      "Returns results as a JSON array of strings with no duplicates",
+      "Avoids extracting overly broad terms that lack specificity to the passage content"
+    ],
+    "task_description": "\nExtract topics out of a passage of text from a scholarly article into a JSON array of strings.\n",
+    "scenario": "Testing with a passage containing implicit and explicit topics, where some key themes are stated directly while others must be inferred from context, to evaluate whether the prompt extracts both obvious and subtle subject matter accurately"
   }
 ]
